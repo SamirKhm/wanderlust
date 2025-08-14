@@ -1,0 +1,42 @@
+Stateful protocol - It requires server to save the status and session information
+eg - ftp
+
+Stateless Protocol - It does not require the server to retain the server information or status 
+eg - http
+
+Express Sessions - Server side -
+		   -Interaction between a single client - server is a session , it has a sessionId , same for other users
+		   -Session store seesion and info and id
+	
+
+		   Client side - 
+		   -seesion ID
+
+
+connect-flash - flash is a special area of session used for storing messages ,
+
+res.locals - use (locals.var) var directly in ejs files
+
+Hashing function - A function to convert password in other form
+
+Salting - A technique to protect passwords stored in database by adding a string of 32 or more characters and then hashing them
+
+Passport configuring startegy - 
+
+app.use(passport.initialize()); 
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate));
+
+MVC : Model , View , Controller 
+
+Router.route() - for same routes 
+
+enctype="multipart/form-data" - send file type data to backend
+
+Geocoding - the process of converting addresses into geographic coordinates (like latitude and longitude) to place mark or position on map
+
+MongoAtlas
+username - khamelesamir
+pass - Lzm6PVm10EtjYgCV
+
+link - mongodb+srv://khamelesamir:Lzm6PVm10EtjYgCV@cluster0.gcxq7cr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

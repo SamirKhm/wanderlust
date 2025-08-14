@@ -1,0 +1,54 @@
+<%- layout("/layouts/boilerplate.ejs")%>
+<body>
+
+        <form method="POST" 
+        action="/listings" 
+        class="form-css needs-validation" 
+        novalidate enctype="multipart/form-data">
+            
+        <h3 class="mb-4 text-center">Create a New Listing</h3>
+
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" id="title" type="text" class="form-control" placeholder="Enter title" required>
+            <div class="valid-feedback">Title looks good !</div>
+          </div>
+          
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" id="description" class="form-control" placeholder="Enter description" rows="3" required></textarea>
+            <div class="valid-feedback">Description looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input name="listing[image]" id="image" type="file" class="form-control" >
+            <div class="invalid-feedback">Image URL must be valid</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input name="listing[price]" id="price" type="number" class="form-control" placeholder="Enter price" required>
+            <div class="invalid-feedback">Price must be valid</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input name="listing[country]" id="country" type="text" class="form-control" placeholder="Enter country" required>
+            <div class="invalid-feedback">Country should be valid</div>            
+          </div>
+
+          <div class="mb-4">
+            <label for="location" class="form-label">Location</label>
+            <input name="listing[location]" id="location" type="text" class="form-control" placeholder="Enter location" required>
+            <div class="invalid-feedback">Location should be valid</div>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn" style="background-color:#fe424d; color: white;">Add Listing</button>
+          </div>
+
+        </form>
+      
+</body>

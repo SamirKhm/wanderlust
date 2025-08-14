@@ -1,0 +1,155 @@
+/* Make sure everything fits properly */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* These make the body fill the whole screen height */
+html, body {
+  height: 100%;
+}
+
+.owner-name{
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+}
+
+/* Set body to be a vertical flexbox container */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* This takes all the remaining space between header and footer */
+.container{
+  flex: 1;
+  padding: 20px;
+}
+
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 14px !important;
+}
+
+
+.nav-link{
+    color: red !important;
+}
+
+#map {
+  height: 400px;
+  width: 100%; /* or use px or % for better control */
+  border-radius: 10px;
+}
+
+
+.navbar{
+    height: 5rem;    
+}
+
+.fa-compass{
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link{
+    color: #222222 !important
+}
+
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links:hover{
+    text-decoration: underline;
+}
+
+
+.f-info-socials a{
+    color: #222222;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+
+.f-info-socials, .f-info-brand, .f-info-links {
+    display: flex;
+    width: 100%;
+
+    justify-content: center; /* centers content horizontally */
+    align-items: center;     /* centers content vertically */
+}
+
+.f-info {
+    text-align: center;
+    height: 8rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* center stacked items vertically */
+    align-items: center;     /* center all items horizontally */
+    background-color: #ebebeb;
+}
+
+.f-info-brand{
+    color: #222222!important;
+}
+
+.card{
+
+    border: none !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.listing-link{
+    text-decoration: none;
+}
+
+.form-css {
+    width: 500px;
+    max-width: 90%; /* For responsiveness on smaller screens */
+    margin: auto;   /* Center horizontally */
+  }
+
+
+
+.show-card{
+    height: 200px;
+    width: 200px;
+}
+
+.show-img{
+    width: 100%;
+}
+
+.card-img-top{
+    object-fit: cover;
+    height: 15rem;
+    max-width: 250px;
+    border-radius: 1rem !important;
+}
+
+.card-body{
+    padding: 0 !important;
+}
+
+.card-text{
+    font-weight: 400;
+}
+
+.form-css {
+      width: 500px;
+      max-width: 90%;
+      margin: 50px auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    
