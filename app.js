@@ -1,4 +1,7 @@
 require('dotenv').config();
+const listingController = require("./controllers/listings.js");
+const wrapAsync=require('./utils/wrapAsync');
+
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -83,19 +86,8 @@ app.use(function(req, res, next) {
   next();
 })
 
-
-app.get("/demouser",async (req,res)=>{
-  let fakeUser = new User({
-    email:"student@gmail.com",
-    username:"Student"
-  });
-  let registeredUser = await User.register(fakeUser,"helloworld");
-  res.send(registeredUser);
-});
-
-
 //Routes for listing and reviews
-app.use("/",listings);
+app.use("/",wrapAsync(listingController.index));
 app.use("/listings", listings);
 app.use("/listings/:id/reviews",reviews);
 app.use("/",user);
