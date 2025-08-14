@@ -19,6 +19,8 @@ const user=require("./routes/user.js");
 const MongoStore = require("connect-mongo");
 const dbUrl= process.env.ATLASDB_URL;
 
+
+
 main()
   .then(() => console.log('Connected to MongoDB!')) 
   .catch(err => console.log(err));
@@ -92,11 +94,13 @@ app.get("/demouser",async (req,res)=>{
 });
 
 
-
 //Routes for listing and reviews
+app.use("/",listings);
 app.use("/listings", listings);
 app.use("/listings/:id/reviews",reviews);
 app.use("/",user);
+
+
 
 // Catch-all for undefined routes
 app.all("/:path", (req, res, next) => {
