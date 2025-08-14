@@ -48,9 +48,6 @@ store.on("error",()=>{
   console.log("Error in mongo session store");
 })
 
-app.get('/', (req, res) => {
-  res.render('index.ejs'); // this looks for views/index.ejs
-});
 
 //Sessions and cookies
 const sessionOptions = {
@@ -94,6 +91,9 @@ app.get("/demouser",async (req,res)=>{
   res.send(registeredUser);
 });
 
+app.get('/', (req, res) => {
+  res.render('index'); // ✅ correct
+});
 
 
 //Routes for listing and reviews
