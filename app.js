@@ -86,8 +86,11 @@ app.use(function(req, res, next) {
   next();
 })
 
+app.get("/", wrapAsync(listingController.index));
+
+
 //Routes for listing and reviews
-app.use("/",wrapAsync(listingController.index));
+
 app.use("/listings", listings);
 app.use("/listings/:id/reviews",reviews);
 app.use("/",user);
