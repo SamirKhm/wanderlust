@@ -91,9 +91,6 @@ app.get("/demouser",async (req,res)=>{
   res.send(registeredUser);
 });
 
-app.get('/', (req, res) => {
-  res.render('/listings'); // ✅ correct
-});
 
 
 //Routes for listing and reviews

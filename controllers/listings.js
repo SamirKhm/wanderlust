@@ -5,6 +5,10 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken=process.env.MAP_TOKEN;
 const geoCodingClient = mbxGeocoding({accessToken:mapToken});
 
+
+module.exports.renderIndex = (req, res) => {
+  res.render('listing/index'); // ✅ matches views/listing/index.ejs
+};
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
   res.render("listings/index", { allListings });
