@@ -92,7 +92,7 @@ app.get("/demouser",async (req,res)=>{
 });
 
 app.get('/', (req, res) => {
-  res.render('index'); // ✅ correct
+  res.render('/listings/index'); // ✅ correct
 });
 
 
