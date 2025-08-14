@@ -48,6 +48,10 @@ store.on("error",()=>{
   console.log("Error in mongo session store");
 })
 
+app.get('/', (req, res) => {
+  res.render('index.ejs'); // this looks for views/index.ejs
+});
+
 //Sessions and cookies
 const sessionOptions = {
   store,
