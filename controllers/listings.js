@@ -67,27 +67,38 @@ module.exports.editListing=async (req, res) => {
   res.render("listings/edit", { listing});
 };
 
-module.exports.updateListing=async (req, res) => {
+module.exports.updateListing = async (req, res) => {
   const { id } = req.params;
 
-  
   if (!req.body.listing) {
     throw new ExpressError("Invalid data for update", 400);
   }
-    const updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+  // Update listing with new form data
+  const updatedListing = await Listing.findByIdAndUpdate(id, { ...req.body.listing }, { new: true });
   if (!updatedListing) {
     req.flash("error", "Listing to update not found");
-    return res.redirect(`/listings`);   
+    return res.redirect(`/listings`);
   }
 
-//file upload
-  if( typeof req.file != "undefined" ){
-  const url=req.file.path;
-  const filename=req.file.filename;
-  updatedListing.image={url,filename};
+  // ✅ Run geocoding if location was updated
+  if (req.body.listing.location) {
+    let response = await geoCodingClient.forwardGeocode({
+      query: req.body.listing.location,
+      limit: 1
+    }).send();
+
+    updatedListing.geometry = response.body.features[0].geometry;
+  }
+
+  // ✅ File upload
+  if (typeof req.file != "undefined") {
+    const url = req.file.path;
+    const filename = req.file.filename;
+    updatedListing.image = { url, filename };
+  }
+
   await updatedListing.save();
-  }
-
 
   req.flash("success", "Listing updated successfully!");
   res.redirect(`/listings/${id}`);
