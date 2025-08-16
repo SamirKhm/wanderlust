@@ -1,5 +1,5 @@
 const Listing = require("../models/listing");
-const listingController = require("../controllers/listings.js");
+
 const mongoose = require("mongoose");
 const ExpressError = require('../utils/ExpressError'); 
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
@@ -19,6 +19,7 @@ module.exports.renderNewForm=(req, res) => {
 };
 
 module.exports.createListing=async (req, res) => {
+  const newListing = new Listing(req.body.listing);
   let response = await geoCodingClient.forwardGeocode({
     query: req.body.listing.location,
 
@@ -30,7 +31,7 @@ module.exports.createListing=async (req, res) => {
   const filename=req.file.filename;
   newListing.image={url,filename};
     }
-  const newListing = new Listing(req.body.listing);
+  
   newListing.geometry = response.body.features[0].geometry;
   newListing.owner=req.user._id;
   await newListing.save();
