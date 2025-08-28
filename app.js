@@ -79,12 +79,12 @@ passport.deserializeUser(User.deserializeUser());
 
 //Flash function
 app.use(flash());
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.locals.successMsg = req.flash("success");
   res.locals.errorMsg = req.flash("error");
-  res.locals.currUser=req.user;
+  res.locals.currUser = req.user || null;  // ✅ always defined
   next();
-})
+});
 
 app.get("/", wrapAsync(listingController.index));
 
@@ -95,12 +95,6 @@ app.use("/listings", listings);
 app.use("/listings/:id/reviews",reviews);
 app.use("/",user);
 
-
-
-// Catch-all for undefined routes
-app.all("/:path", (req, res, next) => {
-  next(new ExpressError("Page Not Found", 404));
-});
 
 // Error Handler
 app.use((err, req, res, next) => {
