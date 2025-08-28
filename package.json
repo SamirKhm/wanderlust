@@ -1,6 +1,6 @@
 {
-  "engines":{
-    "node":"v22.17.1"
+  "engines": {
+    "node": "v22.17.1"
   },
   "name": "airbnb",
   "version": "1.0.0",
@@ -27,7 +27,8 @@
     "express-session": "^1.18.2",
     "joi": "^17.13.3",
     "method-override": "^3.0.0",
-    "mongoose": "^8.16.4",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.0",
     "multer": "^2.0.2",
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.7.0",

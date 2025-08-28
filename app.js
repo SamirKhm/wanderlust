@@ -24,13 +24,18 @@ const dbUrl= process.env.ATLASDB_URL;
 
 
 
+
+async function main() {
+  await mongoose.connect(dbUrl, {
+  serverSelectionTimeoutMS: 10000,
+});
+}
+
 main()
   .then(() => console.log('Connected to MongoDB!')) 
   .catch(err => console.log(err));
 
-async function main() {
-  await mongoose.connect(dbUrl);
-}
+  
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -76,13 +81,18 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use((err, req, res, next) => {
+  console.error(err);      // <-- shows the actual cause
+  res.status(500).json({ error: 'Internal error' });
+});
+
 
 //Flash function
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.successMsg = req.flash("success");
   res.locals.errorMsg = req.flash("error");
-  res.locals.currUser = req.user || null;  // ✅ always defined
+   res.locals.currUser = req.user;
   next();
 });
 
