@@ -38,12 +38,14 @@
         </div>
 
         <div class="ms-auto d-flex align-items-center">
-          <form class="d-flex me-3">
+          <form class="d-flex me-3" method="get" action="/listings/search">
             <input
               class="form-control me-2"
               type="search"
+              name="query"
               placeholder="Search destinations"
               aria-label="Search"
+              
             />
             <button class="btn btn-search" type="submit">Search</button>
           </form>
